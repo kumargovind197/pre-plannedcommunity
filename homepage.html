@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pre-planned Community</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="module">
+       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDQCHDG_AjLP-sqt-5QYD4hBNoCHGAR3xI",
+      authDomain: "member-hub-kcf9x.firebaseapp.com",
+      projectId: "member-hub-kcf9x",
+      storageBucket: "member-hub-kcf9x.firebasestorage.app",
+      messagingSenderId: "441773286066",
+      appId: "1:441773286066:web:b8799fbeca70d63476dfab"
+    };
+ const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+    window.auth = auth;
+  window.db = db;
+  </script>
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans">
+
+<!-- ✅ NAVBAR -->
+<nav class="bg-gray-800 border-b border-gray-700 fixed w-full z-50">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <a href="#" class="flex items-center space-x-3">
+      <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Logo" />
+      <span class="text-2xl font-semibold">Pre-planned</span>
+    </a>
+    <button id="nav-toggle" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-400 rounded-lg md:hidden hover:bg-gray-700">
+      <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M1 1h15M1 7h15M1 13h15"/>
+      </svg>
+    </button>
+
+    <div id="nav-menu" class="hidden w-full md:block md:w-auto">
+      <ul class="flex flex-col md:flex-row md:space-x-8 mt-4 md:mt-0 font-medium bg-gray-800 md:bg-gray-800 p-4 md:p-0 border border-gray-700 md:border-0 rounded-lg">
+        <li><a href="#hero" class="block py-2 px-3 text-blue-400">Home</a></li>
+        <li><a href="#about" class="block py-2 px-3 hover:text-blue-400">About</a></li>
+        <li class="relative">
+          <button id="dropdown-toggle" class="flex items-center py-2 px-3 hover:text-blue-400">
+            Services
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div id="dropdown-menu" class="hidden absolute left-0 mt-2 w-40 bg-gray-800 border border-gray-700 rounded shadow z-50">
+            <a href="#services" class="block px-4 py-2 hover:bg-gray-700">Our Services</a>
+            <a href="#membership" class="block px-4 py-2 hover:bg-gray-700">Membership</a>
+            <a href="#products" class="block px-4 py-2 hover:bg-gray-700">Products</a>
+          </div>
+        </li>
+        <li><a href="#contact" class="block py-2 px-3 hover:text-blue-400">Contact</a></li>
+        <li><a href="signup.html" class="block py-2 px-3 text-blue-400 font-semibold">Sign Up</a></li>
+        <li><a href="sign-in.html" class="block py-2 px-3 text-blue-400 font-semibold">Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ✅ HERO -->
+<section id="hero" class="h-screen flex items-center justify-center pt-32 bg-gray-900 text-center">
+  <div>
+    <h1 class="text-4xl md:text-6xl font-bold mb-4">Plan Ahead with Peace of Mind</h1>
+    <p class="text-lg mb-6 max-w-xl mx-auto text-gray-300">Join our supportive community for funeral, cremation, estate planning & exclusive product discounts.</p>
+    <a href="signup.html" class="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">Get Started</a>
+  </div>
+</section>
+
+<!-- ✅ ABOUT -->
+<section id="about" class="py-20 bg-gray-800 text-center">
+  <h2 class="text-3xl font-bold mb-4">About Us</h2>
+  <p class="max-w-2xl mx-auto text-gray-300">We help families plan ahead with compassion. Our mission is to provide affordable pre-planning solutions for funerals, cremations, estate needs, and memorial products.</p>
+</section>
+
+<!-- ✅ SERVICES -->
+<section id="services" class="py-20 bg-gray-900 text-center">
+  <h2 class="text-3xl font-bold mb-4">Our Services</h2>
+  <div class="flex flex-wrap justify-center gap-8 mt-8">
+    <div class="bg-gray-800 border border-gray-700 rounded-lg p-6 w-72 shadow hover:shadow-lg transition">
+      <h3 class="text-xl font-semibold mb-2">Funeral Planning</h3>
+      <p class="text-gray-300">Guidance for pre-planning funerals and cremations.</p>
+    </div>
+    <div class="bg-gray-800 border border-gray-700 rounded-lg p-6 w-72 shadow hover:shadow-lg transition">
+      <h3 class="text-xl font-semibold mb-2">Estate Planning</h3>
+      <p class="text-gray-300">Resources and support to secure your legacy.</p>
+    </div>
+    <div class="bg-gray-800 border border-gray-700 rounded-lg p-6 w-72 shadow hover:shadow-lg transition">
+      <h3 class="text-xl font-semibold mb-2">Member Discounts</h3>
+      <p class="text-gray-300">Exclusive savings on products & trusted services.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ✅ MEMBERSHIP -->
+<section id="membership" class="py-20 bg-gray-800 text-center">
+  <h2 class="text-3xl font-bold mb-4">Membership Benefits</h2>
+  <p class="max-w-xl mx-auto text-gray-300 mb-6">Get peace of mind with flexible pre-planning packages, priority support, and lifetime discounts for your family.</p>
+  <a href="signup.html" class="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">Join Now</a>
+</section>
+<div class="container mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold mb-8">Our Products</h1>
+<div class="container mx-auto px-4 py-12">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+    <!-- Card 1 -->
+    <div class="w-full max-w-sm bg-gray-800 border border-gray-700 rounded-lg shadow-sm">
+      <img class="w-full h-48 object-contain rounded-t-lg  p-4" src="./screenshot-2024-09-10-at-002621-17259038929691181506033.webp" alt="Apple Watch">
+      <div class="px-5 pb-5">
+        <h5 class="text-xl font-semibold tracking-tight text-white mt-2">Apple Watch Series 7</h5>
+        <div class="flex items-center mt-2 mb-5">
+          <span class="bg-blue-200 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">4.5</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-3xl font-bold text-white">$599</span>
+           <a href="#" 
+  class="add-to-cart text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5"
+  data-name="Apple Watch Series 7"
+  data-price="599">
+  Add to cart
+</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="w-full max-w-sm bg-gray-800 border border-gray-700 rounded-lg shadow-sm">
+      <img class="w-full h-48 object-contain rounded-t-lg bg-white p-4" src="./wirelessheadphones.png" alt="Headphones">
+      <div class="px-5 pb-5">
+        <h5 class="text-xl font-semibold tracking-tight text-white mt-2">Wireless Headphones</h5>
+        <div class="flex items-center mt-2 mb-5">
+          <span class="bg-blue-200 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">4.0</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-3xl font-bold text-white">$199</span>
+         <a href="#" 
+  class="add-to-cart text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5"
+  data-name="Apple Watch Series 7"
+  data-price="599">
+  Add to cart
+</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="w-full max-w-sm bg-gray-800 border border-gray-700 rounded-lg shadow-sm">
+      <img class="w-full h-48 object-contain rounded-t-lg bg-white p-4" src="./smartphone.png" alt="Smartphone">
+      <div class="px-5 pb-5">
+        <h5 class="text-xl font-semibold tracking-tight text-white mt-2">Smartphone</h5>
+        <div class="flex items-center mt-2 mb-5">
+          <span class="bg-blue-200 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">5.0</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-3xl font-bold text-white">$899</span>
+          <a href="#" 
+  class="add-to-cart text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5"
+  data-name="Apple Watch Series 7"
+  data-price="599">
+  Add to cart
+</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="w-full max-w-sm bg-gray-800 border border-gray-700 rounded-lg shadow-sm">
+      <img class="w-full h-48 object-contain rounded-t-lg bg-white p-4" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Laptop">
+      <div class="px-5 pb-5">
+        <h5 class="text-xl font-semibold tracking-tight text-white mt-2">Laptop</h5>
+        <div class="flex items-center mt-2 mb-5">
+          <span class="bg-blue-200 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">5.0</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-3xl font-bold text-white">$1299</span>
+          <a href="#" 
+  class="add-to-cart text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5"
+  data-name="Apple Watch Series 7"
+  data-price="599">
+  Add to cart
+</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="w-full max-w-sm bg-gray-800 border border-gray-700 rounded-lg shadow-sm">
+      <img class="w-full h-48 object-contain rounded-t-lg bg-white p-4" src="./images.png" alt="Camera">
+      <div class="px-5 pb-5">
+        <h5 class="text-xl font-semibold tracking-tight text-white mt-2">DSLR Camera</h5>
+        <div class="flex items-center mt-2 mb-5">
+          <span class="bg-blue-200 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">4.8</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-3xl font-bold text-white">$749</span>
+           <a href="#" 
+  class="add-to-cart text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5"
+  data-name="Apple Watch Series 7"
+  data-price="599">
+  Add to cart
+</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="w-full max-w-sm bg-gray-800 border border-gray-700 rounded-lg shadow-sm">
+      <img class="w-full h-48 object-contain rounded-t-lg bg-white p-4" src="./hero-image.webp" alt="Smart Speaker">
+      <div class="px-5 pb-5">
+        <h5 class="text-xl font-semibold tracking-tight text-white mt-2">Smart Speaker</h5>
+        <div class="flex items-center mt-2 mb-5">
+          <span class="bg-blue-200 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">5.0</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-3xl font-bold text-white">$129</span>
+        <a href="#" 
+  class="add-to-cart text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5"
+  data-name="Apple Watch Series 7"
+  data-price="599">
+  Add to cart
+</a>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<form class="max-w-md mx-auto" id="contact">
+  <div class="relative z-0 w-full mb-5 group">
+      <input type="email" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+      <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
+  </div>
+  <div class="relative z-0 w-full mb-5 group">
+      <input type="password" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+      <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
+  </div>
+  <div class="relative z-0 w-full mb-5 group">
+      <input type="password" name="repeat_password" id="floating_repeat_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+      <label for="floating_repeat_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Confirm password</label>
+  </div>
+  <div class="grid md:grid-cols-2 md:gap-6">
+    <div class="relative z-0 w-full mb-5 group">
+        <input type="text" name="floating_first_name" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+        <label for="floating_first_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First name</label>
+    </div>
+    <div class="relative z-0 w-full mb-5 group">
+        <input type="text" name="floating_last_name" id="floating_last_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+        <label for="floating_last_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last name</label>
+    </div>
+  </div>
+  <div class="grid md:grid-cols-2 md:gap-6">
+    <div class="relative z-0 w-full mb-5 group">
+        <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_phone" id="floating_phone" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+        <label for="floating_phone" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone number (123-456-7890)</label>
+    </div>
+    <div class="relative z-0 w-full mb-5 group">
+        <input type="text" name="floating_company" id="floating_company" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+        <label for="floating_company" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Company (Ex. Google)</label>
+    </div>
+  </div>
+  <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+</form>
+ 
+
+<!-- ✅ FOOTER -->
+<!-- ✅ FOOTER WITH INERT LINKS -->
+<footer class="bg-gray-900 py-8 text-center border-t border-gray-700">
+  <div class="max-w-screen-xl mx-auto px-4">
+    <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+      <p class="text-gray-400">&copy; 2025 Swift006 | Peaceful Planning Community</p>
+      <ul class="flex justify-center space-x-6 text-sm">
+        <li><a href="javascript:void(0)" class="text-gray-400 hover:text-blue-400">Privacy Policy</a></li>
+        <li><a href="javascript:void(0)" class="text-gray-400 hover:text-blue-400">Terms of Service</a></li>
+        <li><a href="javascript:void(0)" class="text-gray-400 hover:text-blue-400">FAQs</a></li>
+        <li><a href="javascript:void(0)" class="text-gray-400 hover:text-blue-400">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ✅ JS -->
+<script>
+  const navToggle = document.getElementById('nav-toggle');
+  const navMenu = document.getElementById('nav-menu');
+  const dropdownToggle = document.getElementById('dropdown-toggle');
+  const dropdownMenu = document.getElementById('dropdown-menu');
+
+  navToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('hidden');
+  });
+
+  dropdownToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dropdownMenu.classList.toggle('hidden');
+  });
+
+  window.addEventListener('click', (e) => {
+    if (!dropdownMenu.classList.contains('hidden') && !dropdownToggle.contains(e.target)) {
+      dropdownMenu.classList.add('hidden');
+    }
+  });
+</script>
+<script type="module">
+  import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+  import { addDoc, collection, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+
+  const cartButtons = document.querySelectorAll('.add-to-cart');
+
+  cartButtons.forEach(button => {
+    button.addEventListener('click', async (e) => {
+      e.preventDefault();
+
+      onAuthStateChanged(auth, async (user) => {
+        if (user) {
+          const name = button.getAttribute('data-name');
+          const price = button.getAttribute('data-price');
+
+          try {
+            await addDoc(collection(db, "cart"), {
+              userId: user.uid,
+              userEmail: user.email,
+              productName: name,
+              productPrice: price,
+              createdAt: serverTimestamp()
+            });
+
+            showAlert("✅ Added to cart successfully!");
+
+          } catch (error) {
+            console.error("Error adding to cart:", error);
+            showAlert("❌ Failed to add to cart.");
+          }
+
+        } else {
+          showAlert("⚠️ Please login to add to cart.");
+        }
+      });
+    });
+  });
+
+  function showAlert(message) {
+    const alertBox = document.createElement('div');
+    alertBox.textContent = message;
+    alertBox.className = 'fixed bottom-5 right-5 bg-gray-800 text-white px-4 py-2 rounded shadow-lg z-50';
+    document.body.appendChild(alertBox);
+
+    setTimeout(() => {
+      alertBox.remove();
+    }, 3000);
+  }
+</script>
+
+</body>
+</html>
