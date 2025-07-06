@@ -5,27 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pre-planned Community</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script type="module">
-       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
-  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
-
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyDQCHDG_AjLP-sqt-5QYD4hBNoCHGAR3xI",
-      authDomain: "member-hub-kcf9x.firebaseapp.com",
-      projectId: "member-hub-kcf9x",
-      storageBucket: "member-hub-kcf9x.firebasestorage.app",
-      messagingSenderId: "441773286066",
-      appId: "1:441773286066:web:b8799fbeca70d63476dfab"
-    };
- const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
-
-    window.auth = auth;
-  window.db = db;
-  </script>
+ 
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans">
 
@@ -101,141 +81,33 @@
     </div>
   </div>
 </section>
-
-<!-- ✅ MEMBERSHIP -->
-<section id="membership" class="py-20 bg-gray-800 text-center">
-  <h2 class="text-3xl font-bold mb-4">Membership Benefits</h2>
-  <p class="max-w-xl mx-auto text-gray-300 mb-6">Get peace of mind with flexible pre-planning packages, priority support, and lifetime discounts for your family.</p>
-  <a href="signup.html" class="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">Join Now</a>
-</section>
-<div id="card" class="container mx-auto px-4 py-12">
-    <h1 class="text-3xl font-bold mb-8">Our Products</h1>
-<div class="container mx-auto px-4 py-12">
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-    <!-- Card 1 -->
-    <div class="w-full max-w-sm bg-gray-800 border border-gray-700 rounded-lg shadow-sm">
-      <img class="w-full h-48 object-contain rounded-t-lg  p-4" src="./screenshot-2024-09-10-at-002621-17259038929691181506033.webp" alt="Apple Watch">
-      <div class="px-5 pb-5">
-        <h5 class="text-xl font-semibold tracking-tight text-white mt-2">Apple Watch Series 7</h5>
-        <div class="flex items-center mt-2 mb-5">
-          <span class="bg-blue-200 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">4.5</span>
-        </div>
-        <div class="flex items-center justify-between">
-          <span class="text-3xl font-bold text-white">$599</span>
-           <a href="#" 
-  class="add-to-cart text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5"
-  data-name="Apple Watch Series 7"
-  data-price="599">
-  Add to cart
-</a>
-        </div>
+<div class="flex justify-center items-center min-h-screen bg-[#1E1E1E] px-4">
+  <div class="bg-[#2C2C2C] rounded-2xl shadow-xl p-6 max-w-sm w-full text-white relative text-center">
+    
+    <!-- Most Popular Ribbon -->
+    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+      <div class="bg-yellow-500 text-black text-xs px-3 py-1 rounded shadow font-semibold">
+        MOST POPULAR
       </div>
     </div>
 
-    <!-- Card 2 -->
-    <div class="w-full max-w-sm bg-gray-800 border border-gray-700 rounded-lg shadow-sm">
-      <img class="w-full h-48 object-contain rounded-t-lg bg-white p-4" src="./wirelessheadphones.png" alt="Headphones">
-      <div class="px-5 pb-5">
-        <h5 class="text-xl font-semibold tracking-tight text-white mt-2">Wireless Headphones</h5>
-        <div class="flex items-center mt-2 mb-5">
-          <span class="bg-blue-200 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">4.0</span>
-        </div>
-        <div class="flex items-center justify-between">
-          <span class="text-3xl font-bold text-white">$199</span>
-         <a href="#" 
-  class="add-to-cart text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5"
-  data-name="Apple Watch Series 7"
-  data-price="599">
-  Add to cart
-</a>
-        </div>
-      </div>
-    </div>
+    <!-- Title -->
+    <h2 class="text-3xl font-bold mt-6 mb-2">PLATINUM</h2>
 
-    <!-- Card 3 -->
-    <div class="w-full max-w-sm bg-gray-800 border border-gray-700 rounded-lg shadow-sm">
-      <img class="w-full h-48 object-contain rounded-t-lg bg-white p-4" src="./smartphone.png" alt="Smartphone">
-      <div class="px-5 pb-5">
-        <h5 class="text-xl font-semibold tracking-tight text-white mt-2">Smartphone</h5>
-        <div class="flex items-center mt-2 mb-5">
-          <span class="bg-blue-200 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">5.0</span>
-        </div>
-        <div class="flex items-center justify-between">
-          <span class="text-3xl font-bold text-white">$899</span>
-          <a href="#" 
-  class="add-to-cart text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5"
-  data-name="Apple Watch Series 7"
-  data-price="599">
-  Add to cart
-</a>
-        </div>
-      </div>
-    </div>
+    <!-- Description -->
+    <p class="text-gray-300 mb-4">
+      Our most popular membership level with added benefits:
+    </p>
 
-    <!-- Card 4 -->
-    <div class="w-full max-w-sm bg-gray-800 border border-gray-700 rounded-lg shadow-sm">
-      <img class="w-full h-48 object-contain rounded-t-lg bg-white p-4" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Laptop">
-      <div class="px-5 pb-5">
-        <h5 class="text-xl font-semibold tracking-tight text-white mt-2">Laptop</h5>
-        <div class="flex items-center mt-2 mb-5">
-          <span class="bg-blue-200 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">5.0</span>
-        </div>
-        <div class="flex items-center justify-between">
-          <span class="text-3xl font-bold text-white">$1299</span>
-          <a href="#" 
-  class="add-to-cart text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5"
-  data-name="Apple Watch Series 7"
-  data-price="599">
-  Add to cart
-</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 5 -->
-    <div class="w-full max-w-sm bg-gray-800 border border-gray-700 rounded-lg shadow-sm">
-      <img class="w-full h-48 object-contain rounded-t-lg bg-white p-4" src="./images.png" alt="Camera">
-      <div class="px-5 pb-5">
-        <h5 class="text-xl font-semibold tracking-tight text-white mt-2">DSLR Camera</h5>
-        <div class="flex items-center mt-2 mb-5">
-          <span class="bg-blue-200 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">4.8</span>
-        </div>
-        <div class="flex items-center justify-between">
-          <span class="text-3xl font-bold text-white">$749</span>
-           <a href="#" 
-  class="add-to-cart text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5"
-  data-name="Apple Watch Series 7"
-  data-price="599">
-  Add to cart
-</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 6 -->
-    <div class="w-full max-w-sm bg-gray-800 border border-gray-700 rounded-lg shadow-sm">
-      <img class="w-full h-48 object-contain rounded-t-lg bg-white p-4" src="./hero-image.webp" alt="Smart Speaker">
-      <div class="px-5 pb-5">
-        <h5 class="text-xl font-semibold tracking-tight text-white mt-2">Smart Speaker</h5>
-        <div class="flex items-center mt-2 mb-5">
-          <span class="bg-blue-200 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">5.0</span>
-        </div>
-        <div class="flex items-center justify-between">
-          <span class="text-3xl font-bold text-white">$129</span>
-        <a href="#" 
-  class="add-to-cart text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5"
-  data-name="Apple Watch Series 7"
-  data-price="599">
-  Add to cart
-</a>
-
-        </div>
-      </div>
-    </div>
+    
+  
+   <!-- This button must be in your HTML -->
+<div onclick="handleJoinPlatinum()" class="bg-gray-800 hover:bg-gray-700 transition text-white text-lg py-2 rounded-full font-semibold cursor-pointer">
+  $27 per month
+</div>
 
   </div>
 </div>
-
 
 <form class="max-w-md mx-auto" id="contact">
   <div class="relative z-0 w-full mb-5 group">
@@ -314,54 +186,51 @@
   });
 </script>
 <script type="module">
-  import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
-  import { addDoc, collection, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
-  const cartButtons = document.querySelectorAll('.add-to-cart');
+  const firebaseConfig = {
+    apiKey: "AIzaSyDQCHDG_AjLP-sqt-5QYD4hBNoCHGAR3xI",
+    authDomain: "member-hub-kcf9x.firebaseapp.com",
+    projectId: "member-hub-kcf9x",
+    storageBucket: "member-hub-kcf9x.firebasestorage.app",
+    messagingSenderId: "441773286066",
+    appId: "1:441773286066:web:b8799fbeca70d63476dfab"
+  };
 
-  cartButtons.forEach(button => {
-    button.addEventListener('click', async (e) => {
-      e.preventDefault();
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
 
-      onAuthStateChanged(auth, async (user) => {
-        if (user) {
-          const name = button.getAttribute('data-name');
-          const price = button.getAttribute('data-price');
+  window.handleJoinPlatinum = async function () {
+    
 
-          try {
-            await addDoc(collection(db, "cart"), {
-              userId: user.uid,
-              userEmail: user.email,
-              productName: name,
-              productPrice: price,
-              createdAt: serverTimestamp()
-            });
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
 
-            showAlert("✅ Added to cart successfully!");
+        const userData = {
+          name: user.displayName || "No Name",
+          email: user.email,
+          uid: user.uid,
+          membership: "Platinum",
+          joinedAt: serverTimestamp()
+        };
 
-          } catch (error) {
-            console.error("Error adding to cart:", error);
-            showAlert("❌ Failed to add to cart.");
-          }
-
-        } else {
-          showAlert("⚠️ Please login to add to cart.");
+        try {
+          const docRef = await addDoc(collection(db, "memberships"), userData);
+          alert("Membership saved successfully!");
+        } catch (err) {
+          alert("Something went wrong!");
         }
-      });
+      } else {
+        alert("Please log in to join.");
+        location.href = "sign-in.html";
+      }
     });
-  });
-
-  function showAlert(message) {
-    const alertBox = document.createElement('div');
-    alertBox.textContent = message;
-    alertBox.className = 'fixed bottom-5 right-5 bg-gray-800 text-white px-4 py-2 rounded shadow-lg z-50';
-    document.body.appendChild(alertBox);
-
-    setTimeout(() => {
-      alertBox.remove();
-    }, 3000);
-  }
+  };
 </script>
+
 
 </body>
 </html>
